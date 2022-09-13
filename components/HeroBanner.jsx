@@ -1,21 +1,24 @@
 import React from "react";
-import Link from "next/link";
 
-export default function HeroBanner() {
+import Link from "next/link";
+import {urlFor} from 'next/link';
+
+export default function HeroBanner({ heroBanner }) {
   return (
     <div className="hero-banner-container">
-      <p className="beats-solo">Small Text</p>
-      <h3>MID TExt</h3>
-      <img src="" alt="Profile" className="hero_banner-image" />
+      <p className="beats-solo">{heroBanner.smallText}</p>
+      <h3>{heroBanner.midText}</h3>
+      <h1>{heroBanner.largeText}</h1>
+      <img src={urlFor(heroBanner.image)} alt="Sale" className="hero_banner-image" />
 
       <div>
-        <Link href="/product/ID">
-          <button type="button">BUTTON TEXT</button>
+        <Link href={`/product/${heroBanner.product}`}>
+          <button type="button">{heroBanner.buttonText}</button>
         </Link>
       </div>
       <div>
         <h5>Description</h5>
-        <p>About Creator</p>
+        <p>{heroBanner.desc}</p>
       </div>
     </div>
   );
